@@ -1,0 +1,11 @@
+strong {
+    color: #f93;
+}
+
+.faded {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.faded strong {
+    color: rgba(255, 153, 51, 0.3);
+}

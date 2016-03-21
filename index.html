@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Getting Started With Behat</title>
+
+		<meta name="description" content="Getting started with Behat">
+		<meta name="author" content="Charles Sarrazin">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Getting started with Behat</h1>
+
+					<p>
+						<small>Created by <a href="https://csarrazi.github.io">Charles Sarrazin</a> / <a href="https://twitter.com/csarrazi">@csarrazi</a></small>
+					</p>
+				</section>
+
+				<!-- <section>
+					<h2>About me</h2>
+					<p>
+						Charles Sarrazin, Lead Architect@<a href="https://sensiolabs.com">SensioLabs</a>
+					</p>
+				</section> -->
+
+				<section>
+					<section>
+						<h1>About BDD</h1>
+					</section>
+
+					<section>
+						<h2>Evolution of Test-Driven Development</h2>
+
+						<p><img src="assets/timeline.png"></p>
+					</section>
+
+					<section>
+						<h2>Evolution of Test-Driven Development</h2>
+
+						<p><img src="assets/timeline2.png"></p>
+					</section>
+
+					<section>
+						<h2>Specification BDD</h2>
+						<p><img src="assets/phpspec.png"></p>
+						<p><a href="http://phpspec.net">http://phpspec.net</a></p>
+					</section>
+
+					<section>
+						<h2>Scenario-oriented BDD</h2>
+						<h3>(Story BDD)</h3>
+					</section>
+
+					<section>
+						<h2>Problem</h2>
+
+						<p>Create a single vocabulary and process for planning, implementing and testing a feature, with a focus on the <strong>behavior</strong> of the feature.</p>
+					</section>
+
+					<section>
+						<h2>Solution</h2>
+
+						<ul>
+							<li><strong>Define</strong> business value for the features</li>
+							<li><strong>Prioritize</strong> features by their business value</li>
+							<li><strong>Describe</strong> them with readable scenarios</li>
+							<li>And only then - <strong>implement</strong> them</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Enter Gherkin</h1>
+					</section>
+
+					<section>
+						<h2>A project consists in <strong>many</strong> features</h2>
+					</section>
+
+					<section>
+						<h2>These need to be planned, written and shared</h2>
+					</section>
+
+					<section>
+						<h2>Gherkin</h2>
+
+						<p>A structured language to describe a feature</p>
+					</section>
+
+					<section>
+						<h2>Example</h2>
+
+						<pre><code class="gherkin">Feature: {custom_title}
+    In order to {A}
+    As a {B}
+    I need to {C}</code></pre>
+    					<ul>
+    						<li><code>{A}</code> - The benefit or <strong>value</strong> of the feature</li>
+    						<li><code>{B}</code> - the <strong>role</strong> (or persona) who will benefit</li>
+    						<li><code>{C}</code> - short feature <strong>description</strong></li>
+    					</ul>
+					</section>
+
+					<section>
+						<h2>Solution</h2>
+
+						<ul>
+							<li><strong>Define</strong> business value for the features</li>
+							<li class="faded"><strong>Prioritize</strong> features by their business value</li>
+							<li class="faded"><strong>Describe</strong> them with readable scenarios</li>
+							<li class="faded">And only then - <strong>implement</strong> them</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Read news in French</h2>
+
+						<pre><code class="gherkin">Feature: I18n
+    In order to read news in french
+    As a french user
+    I need to be able to switch locale</code></pre>
+					</section>
+
+					<section>
+						<h2>Solution</h2>
+
+						<ul>
+							<li class="faded"><strong>Define</strong> business value for the features</li>
+							<li><strong>Prioritize</strong> features by their business value</li>
+							<li class="faded"><strong>Describe</strong> them with readable scenarios</li>
+							<li class="faded">And only then - <strong>implement</strong> them</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Prioritize...</h2>
+
+						<pre><code class="gherkin">1) Feature: News admin panel
+2) Feature: I18n
+3) Feature: News list API</code></pre>
+					</section>
+
+					<section>
+						<h2>Solution</h2>
+
+						<ul>
+							<li class="faded"><strong>Define</strong> business value for the features</li>
+							<li class="faded"><strong>Prioritize</strong> features by their business value</li>
+							<li><strong>Describe</strong> them with readable scenarios</li>
+							<li class="faded">And only then - <strong>implement</strong> them</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Describe...</h2>
+
+						<pre><code class="gherkin">Feature: News admin panel
+    In order to maintain a list of news
+    As a site administrator
+    I need to be able to edit news
+
+    Scenario: Add new article
+        Given I am on the "/admin/news" page
+        When I click "New Article"
+        And I fill in "Title" with "Learned BDD"
+        And I press "Save"
+        Then I should see "A new article was added"</code></pre>
+					</section>
+
+					<section>
+						<h2>Given</h2>
+
+						<p>Defines the initial state of the system for the scenario</p>
+					</section>
+
+					<section>
+						<h2>When</h2>
+
+						<p>Describes the action taken with the <strong>person / role</strong></p>
+					</section>
+
+					<section>
+						<h2>Then</h2>
+
+						<p>Describes the <strong>observable</strong> system state after the action has been performed</p>
+					</section>
+
+					<section>
+						<h2>And/But</h2>
+
+						<p>Can be added to create multiple <em>Given/When/Then</em> lines</p>
+					</section>
+
+					<section>
+						<h2>Example #2</h2>
+
+						<pre><code class="gherkin">Scenario: List available articles
+    Given there are 5 news articles
+    And I am on the "/admin" page
+    When I click "News Administration"
+    Then I should see 5 news articles</code></pre>
+					</section>
+
+					<section>
+						<h2><strong>Gherkin</strong></h2>
+						<p>gives us a consistent language for describing <strong>features</strong> and their <strong>scenarios</strong>...</p>
+					</section>
+
+					<section>
+						<h2>... now let's turn them into tests!</2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Introducing <strong>Behat</strong></h1>
+					</section>
+
+					<section>
+						<p>Having a standard way of describing features is cool...</p>
+					</section>
+
+					<section>
+						<p>... executing those sentences as functional tests is just <strong>awesome</strong></p>
+					</section>
+
+					<section>
+						<h2>What is Behat?</h2>
+
+						<p>Behat does one simple thing:</p>
+						<p><strong>It maps each step** to a PHP Callback</strong></p>
+						<p>Behat "executes" your scenarios, reading each step and calling the function associated with it</p>
+
+						<p>**: each line in a scenario is called a "step"</p>
+					</section>
+
+					<section>
+						<h2>Installing Behat</h2>
+
+						<p><strong>Behat</strong> is just a library that can be installed easily in any project using <strong>Composer</strong></p>
+					</section>
+
+					<section>
+						<h2>In your project directory...</h2>
+
+						<pre><code class="bash">composer require "behat/behat"</code></pre>
+
+						<p>And... That's it!</p>
+					</section>
+
+					<section>
+						<p>The most important product of the installation is an executable <strong><code>bin/behat</code></strong> file</p>
+					</section>
+
+					<section>
+						<img src="assets/behat_cli.png">
+					</section>
+
+					<section>
+						<h2>Behat in a project</h2>
+
+						<p>To use <strong>Behat</strong> in a project, you need:</p>
+
+						<ol>
+							<li>Actual <code>*.feature</code> files to be executed</li>
+							<li>A <code>FeatureContext.php</code> file that holds the PHP callbacks for each step</li>
+							<li>(optional) A <code>behat.yml</code> configuration file</li>
+						</ol>
+					</section>
+
+					<section>
+						<code>$ php bin/behat --init</code>
+
+						<img src="assets/behat_init.png">
+					</section>
+
+					<section>
+						<pre><code class="php">&lt;php
+
+use Behat\Behat\Context\Context;
+use Behat\Behat\Context\SnippetAcceptingContext;
+use Behat\Gherkin\Node\PyStringNode;
+use Behat\Gherkin\Node\TableNode;
+
+class FeatureContext implements Context, SnippetAcceptingContext
+{
+    /**
+     * Initializes context.
+     *
+     * Every scenario gets its own context instance.
+     * You can also pass arbitrary arguments to the
+     * context constructor through behat.yml.
+     */
+    public function __construct()
+    {
+    }
+}
+</code></pre>
+					</section>
+
+					<section>
+						<h2>Example</h2>
+						<p>Testing the "ls" command</p>
+					</section>
+
+					<section>
+						<h2>Describing the feature</h2>
+
+						<pre><code class="gherkin">Feature: ls
+    In order to see the directory structure
+    As a UNIX user
+    I need to be able to list the current directory's contents</code></pre>
+					</section>
+
+					<section>
+						<h2>First scenario</h2>
+
+						<blockquote>If you have two files in a directory, and you're running the command, you should see them listed.</blockquote>
+					</section>
+
+					<section>
+						<h2>Writing the first scenario</h2>
+
+						<pre><code class="gherkin">Scenario: List 2 files in a directory
+    Given I have a file named "foo"
+    And I have a file named "bar"
+    When I run "ls"
+    Then I should see "foo" in the output
+    And I should see "bar" in the output</code></pre>
+					</section>
+
+					<section>
+						<h2>Run behat</h2>
+
+						<p><code>$ php bin/behat</code></p>
+					</section>
+
+					<section>
+						<p><img src="assets/behat_missing_steps_1.png"></p>
+					</section>
+
+					<section>
+						<p><img src="assets/behat_missing_steps_2.png"></p>
+					</section>
+
+					<section>
+						<h2>Copy the definition in the FeatureContext</h2>
+						<pre><code class="php">
+    /**
+     * @Given I have a file named :arg1
+     */
+    public function iHaveAFileNamed($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When I run :arg1
+     */
+    public function iRun($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then I should see :arg1 in the output
+     */
+    public function iShouldSeeInTheOutput($arg1)
+    {
+        throw new PendingException();
+    }
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Replace the code with what it should really do</h2>
+						<pre><code class="php">
+
+    /**
+     * @Given I have a file named :file
+     */
+    public function iHaveAFileNamed($file)
+    {
+        touch($file);
+    }
+
+    /**
+     * @When I run :command
+     */
+    public function iRun($command)
+    {
+        exec($command, $output);
+        $this->output = trim(implode("\n", $output));
+    }
+
+    /**
+     * @Then I should see :string in the output
+     */
+    public function iShouldSeeInTheOutput($string)
+    {
+        \PHPUnit_Framework_Assert::assertContains($string, explode("\n", $this->output));
+    }
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>And enjoy!</h2>
+						<p><img src="assets/behat_final.png"></p>
+					</section>
+
+					<section>
+						<h2>What <strong>Behat</strong> does</h2>
+						<ol>
+							<li>Scenario Step: <code>Given I have a file named "foo"</code></li>
+							<li>Regex: <code>@Given I have a file named :file</code></li>
+							<li>Definition: <code>public function iHaveAFileNamed($file)</code></li>
+							<li>Do work: <code>touch($file);</code></li>
+						</ol>
+						<p>Pass / Fail: Each step is a "test", which passes *unless* an exception is thrown</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Mink</h1>
+						<h2>Controlling a real browser with <strong>Behat</strong></h2>
+					</section>
+
+					<section>
+						<h2>What is Mink?</h2>
+						<ul>
+							<li>A standalone library to use PHP to control a "browser"</li>
+							<li>One easy API to command Selenium, Goutte, ZombieJS, etc.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Example</h2>
+						<pre><code class="php">use Behat\Mink\Driver\GoutteDriver;
+use Behat\Mink\Session;
+
+// change *only* this line to run
+// in Selenium, etc
+$driver=new GoutteDriver();
+$session=new Session($driver);</code></pre>
+					</section>
+
+					<section>
+						<h2>Example(2)</h2>
+						<pre><code class="php">// visit a page
+$session->visit('http://behat.org');
+echo'URL : '.$session->getCurrentUrl();
+echo'Status: '.$session->getStatusCode();</code></pre>
+					</section>
+
+					<section>
+						<h2>Example(3)</h2>
+						<pre><code class="php">$page=$session->getPage();
+// drill down into the page
+$ele=$page->find('css','li:nth-child(4) a');
+echo'Link text is: '.$ele->getText();
+echo'href is: '.$ele->getAttribute('href');
+
+// click the link// (you can also fill out forms)
+$ele->click();</code></pre>
+					</section>
+
+					<section>
+						<h2>Mink and Behat</h2>
+					</section>
+
+					<section>
+						<h2>Integration</h2>
+						<p><strong>Behat</strong> &larr; MinkExtension &rarr;<strong>Mink</strong></p>
+						<ul>
+							<li>An "Extension" is like a Behat plugin</li>
+							<li>The MinkExtension makes using Mink inside Behat a matter of configuration</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Installing Mink and MinkExtension</h2>
+						<ul>
+							<li>Update <code>composer.json</code> to include
+							<ul>
+								<li>Mink</li>
+								<li>MinkExtension</li>
+								<li>Goutte, BrowserKit or Selenium2 drivers for Mink</li>
+							</ul>
+							</li>
+							<li>Update the vendor libraries
+							<pre><code class="bash">$ php composer update</code></pre></li>
+						</ul>
+					</section>
+
+					<section>
+						<pre><code class="json">{
+    "require-dev": {
+        "behat/behat": "^3.0",
+        "behat/mink": "^1.7",
+        "behat/mink-extension": "^2.1",
+        "behat/mink-goutte-driver": "^1.2",
+        "behat/mink-selenium2-driver": "^1.3"
+    },
+    "config": {
+        "bin-dir": "bin/"
+    }
+}</code></pre>
+					</section>
+
+					<section>
+						<h2><strong>Goal</strong>: To easily use Mink inside FeatureContext</h2>
+					</section>
+
+					<section>
+						<h2>Bootstrap MinkExtension</h2>
+						<pre><code class="yaml"># behat.yml
+default:
+    extensions:
+        Behat\MinkExtension:
+            goutte: ~
+            selenium2: ~
+            # The base URL to app you're testing
+            base_url: http://en.wikipedia.org/</code></pre>
+            			<p><code>behat.yml</code> is the Behat configuration file and can contain much more than you see here</p>
+					</section>
+
+					<section>
+						<h2>Extending MinkContext</h2>
+						<pre><code class="php">use Behat\MinkExtension\Context\MinkContext;
+class FeatureContext extends MinkContext</code></pre>
+						<p>Extending MinkContext gives us 2 things...</p>
+					</section>
+
+					<section>
+						<h2>Access to a Mink session</h2>
+						<pre><code class="php">class FeatureContext extends MinkContext
+{
+    public function doSomething()
+    {
+        $session = $this->getSession();
+        $session->visit('http://behat.org');
+    }
+
+   // ...
+}</code></pre>
+						<p>Our custom definitions can now command a browser!</p>
+					</section>
+
+					<section>
+						<h2>We inherit a pile of great definitions</h2>
+
+						<p>Before extending MinkContext:</p>
+						<p><img src="assets/dl_before.png"></p>
+						<p>The <strong>-dl</strong> option prints all available definitions</p>
+					</section>
+
+					<section>
+						<p>After extending MinkContext:</p>
+						<p><img src="assets/dl_after.png"></p>
+					</section>
+
+					<section>
+						<h2>In other words</h2>
+						<p>We can write some tests for our app without writing any PHP code</p>
+					</section>
+
+					<section>
+						<h2>Suppose we want to test Wikipedia</h2>
+					</section>
+
+					<section>
+						<pre><code class="gherkin"># features/wikipedia.feature
+Feature: Search
+    In order to see a word definition
+    As a website user
+    I need to be able to search for a word
+
+    Scenario: Searching for a page that does exist
+        Given I am on "/wiki/Main_Page"
+        When I fill in "search" with "Behavior Driven Development"
+        And I press "searchButton"
+        Then I should see "agile software development"</code></pre>
+        				<p>These 4 definitions are bundled with MinkContext</p>
+					</section>
+
+					<section>
+						<h2>Celebrate!</h2>
+						<p><img src="assets/behat_mink.png"></p>
+					</section>
+
+					<section>
+						<h2>Want to run the tests in Selenium?</h2>
+					</section>
+
+					<section>
+						<h2>Add <code>@javascript</code></h2>
+						<pre><code class="gherkin">Feature: Search
+    In order to see a word definition
+    As a website user
+    I need to be able to search for a word
+
+    @javascript
+    Scenario: Searching for a page that does exist
+        Given I am on "/wiki/Main_Page"
+        When I fill in "search" with "Behavior Driven Development"
+        And I press "searchButton"
+        Then I should see "agile software development"</code></pre>
+					</section>
+
+					<section>
+						<h2>Yep, that's all!</h2>
+						<p>You simply need to <strong>tag</strong> the test using <code>@javascript</code></p>
+					</section>
+
+					<section>
+						<h2>Installing Selenium</h2>
+						<pre><code class="bash">$ wget http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.0.jar
+$ java -jar selenium-server-standalone-2.53.0.jar</code></pre>
+					</section>
+
+					<section>
+						<h2>Re-run the tests</h2>
+						<p><img src="assets/behat_mink_selenium.png"></p>
+					</section>
+
+					<section>
+						<h2>You should see you browser window</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>And... That's it!</h1>
+					</section>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
